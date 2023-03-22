@@ -8,7 +8,7 @@ describe('filter', () => {
     });
 
     test('returns length properly', () => {
-        expect(filter(users, function (user) { return user.age < 30 }).length).toBe(3);
+        expect(filter(users, function (user) { return user.age >= 30 }).length).toBe(3);
     });
 
     test('returns value properly', () => {
@@ -16,6 +16,6 @@ describe('filter', () => {
             filter([1, 2, 3, 4], function (val, idx) {
                 return idx > 1;
             })
-        ).toBe([3, 4]);
+        ).toEqual([3, 4]);
     });
 });

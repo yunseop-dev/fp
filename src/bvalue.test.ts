@@ -10,8 +10,9 @@ describe('bvalue', () => {
             filter(users, function (user) { return user.age < 30 }),
             bvalue('age')
         );
-        expect(ages).toBe([25, 28, 27, 24])
+        expect(ages).toEqual([25, 28, 27, 24])
         expect(ages.length).toBe(4)
+        
     })
 
     test('returns array properly', () => {
@@ -20,7 +21,7 @@ describe('bvalue', () => {
             bvalue('name')
         );
 
-        expect(names).toBe(["ID", "BJ", "JM"])
+        expect(names).toEqual(["ID", "BJ", "JM"])
         expect(names.length).toBe(3)
     })
 })

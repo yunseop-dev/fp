@@ -5,7 +5,8 @@ import identity from './identity';
 describe('filter', () => {
     test('returns value properly', () => {
         expect(
+            // @ts-ignore;
             filter([true, 0, 10, 'a', false, null], identity)
-        ).toBe([true, 10, 'a']);
+        ).toEqual([true, 10, 'a']);
     });
 });
