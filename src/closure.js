@@ -4,7 +4,7 @@ function f1() {
     return a + b;
 }
 f1();
-
+// node.js - closure, browser - X
 // ------
 
 function f2() {
@@ -18,7 +18,7 @@ function f2() {
 var f4 = f2();
 f4(5, 7);
 // 12
-
+// is this closure? - X
 // -----
 
 function f4() {
@@ -31,7 +31,7 @@ function f4() {
 }
 f4();
 // 30
-
+// is this closure? - X
 // -----
 
 function f6() {
@@ -46,7 +46,7 @@ f8(20);
 // 30
 f8(10);
 // 20
-
+// closure
 // -----
 
 function f9() {
@@ -59,6 +59,7 @@ function f9() {
 }
 var f11 = f9();
 f11(30);
+// closure
 // 60
 
 // -----
