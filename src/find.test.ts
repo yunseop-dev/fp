@@ -24,6 +24,13 @@ var users2 = [
     new User(7, "HI", 24)
 ];
 
+const array = [1, 10, 100, 1000];
+const users3 = [
+  { id: 2, name: "HA", age: 25 },
+  { id: 4, name: "PJ", age: 28 },
+  { id: 5, name: "JE", age: 27 }
+];
+
 describe('find', () => {
     test('returns value properly', () => {
         expect(find(users2, function (u) { return u.getAge() == 25 }).getName()).toBe('HA');
@@ -46,4 +53,24 @@ describe('find', () => {
             find(users2, function(u) { return u.getAge() < 30 }).getName()
         ).toBe('HA');
     });
+
+    test("finds first value greater than 50 from an array", () => {
+        const result = find(array, function(v) { return v > 50; });
+        expect(result).toBe(100);
+      });
+    
+      test("finds first user whose age is 27", () => {
+        const result = find(users3, function(user) { return user.age == 27; });
+        expect(result).toEqual({ id: 5, name: "JE", age: 27 });
+      });
+    
+      test("returns undefined if value not found in array", () => {
+        const result = find(array, function(v) { return v > 10000; });
+        expect(result).toBeUndefined();
+      });
+    
+      test("returns undefined if user not found in array", () => {
+        const result = find(users3, function(user) { return user.age == 30; });
+        expect(result).toBeUndefined();
+      });
 });

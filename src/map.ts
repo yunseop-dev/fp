@@ -1,7 +1,10 @@
 // getLength
 // isArrayLike 사용
 
+import array from "./array";
 import identity from "./identity";
+import noop from "./noop";
+import push_to from "./push_to";
 
 // function map<T, U>(
 //     list: T[],
@@ -23,17 +26,6 @@ function getLength(data: any) {
 function isArrayLike(data: any) {
     const length = getLength(data);
     return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
-}
-
-// array, push_to, noop
-function array(): any {
-    return []
-}
-function push_to(value: any, arr: any[]) {
-    return arr.push(value);
-}
-function noop() {
-
 }
 
 function bloop(newData: any, body: any) {
