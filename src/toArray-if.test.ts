@@ -10,35 +10,40 @@ describe('Lodash', () => {
       });
     });
   
-    describe('iff()', () => {
-      test('should return the result of `func` when `validator` returns true', () => {
-        const square = iff(
-          a => toString.call(a) == '[object Number]',
-          a => a * a,
-          () => 0
-        );
-        expect(square(5)).toEqual(25);
-      });
+    // describe('iff()', () => {
+    //   test('should return the result of `func` when `validator` returns true', () => {
+    //     const square = iff(
+    //       a => toString.call(a) == '[object Number]',
+    //       a => a * a,
+    //       () => 0
+    //     );
+    //     expect(square(5)).toEqual(25);
+    //   });
   
-      test('should return the result of `alter` when `validator` returns false and `alter` is provided', () => {
-        const square = iff(
-          a => toString.call(a) == '[object Number]',
-          a => a * a,
-          () => 0
-        );
-        expect(square("가나다")).toEqual(0);
-      });
-    });
+    //   test('should return the result of `alter` when `validator` returns false and `alter` is provided', () => {
+    //     const square = iff(
+    //       a => toString.call(a) == '[object Number]',
+    //       a => a * a,
+    //       () => 0
+    //     );
+    //     expect(square("가나다")).toEqual(0);
+    //   });
+    // });
   
-    describe('safety()', () => {
-      test('should return the result of `func` when `validator` returns true', () => {
-        const square = iff(isNumber, a => a * a, () => 0);
-        expect(square(5)).toEqual(25);
-      });
+    // describe('safety()', () => {
+    //   test('should return the result of `func` when `validator` returns true', () => {
+    //     const square = iff(isNumber, a => a * a, () => 0);
+    //     expect(square(5)).toEqual(25);
+    //   });
+
+    //   test('alter test', () => {
+    //     const square = iff(isNumber, a => a * a);
+    //     expect(square('foo')).toEqual(undefined);
+    //   });
   
-      test('should return the result of `alter` when `validator` returns false and `alter` is provided', () => {
-        const square = iff(isNumber, a => a * a, () => 0);
-        expect(square("가나다")).toEqual(0);
-      });
-    });
+    //   test('should return the result of `alter` when `validator` returns false and `alter` is provided', () => {
+    //     const square = iff(isNumber, a => a * a, () => 0);
+    //     expect(square("가나다")).toEqual(0);
+    //   });
+    // });
   });

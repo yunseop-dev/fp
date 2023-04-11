@@ -5,6 +5,7 @@ import array from "./array";
 import identity from "./identity";
 import noop from "./noop";
 import push_to from "./push_to";
+import { keys } from "./values";
 
 // function map<T, U>(
 //     list: T[],
@@ -28,16 +29,21 @@ function isArrayLike(data: any) {
     return typeof length == 'number' && length >= 0 && length <= MAX_ARRAY_INDEX;
 }
 
-function bloop(newData: any, body: any) {
+export function bloop(newData: any, body: any, stopper?: any) {
     return function (data: any, iteratee: any) {
         const result = newData(data);
+        let memo;
         if (isArrayLike(data)) {
             for (let i = 0, len = data.length; i < len; i++) {
-                body(iteratee(data[i], i, data), result)
+                memo = iteratee(data[i], i, data);
+                if (!stopper) body(memo, result, data[i])
+                else if (stopper(memo)) return body(memo, result, data[i], i);
             }
         } else {
-            for (let key in data) {
-                if (data.hasOwnProperty(key)) body(iteratee(data[key], key, data), result)
+            for (let i = 0, keyss = keys(data), len = keyss.length; i < len; i++) {
+                memo = iteratee(data[keyss[i]], keyss[i], data);
+                if (!stopper) body(memo, result, data[keyss[i]], keyss[i]);
+                else if (stopper(memo)) return body(memo, result, data[keyss[i]], keyss[i]);
             }
         }
         return result;

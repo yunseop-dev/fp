@@ -1,3 +1,5 @@
+import toArray from "./toArray";
+
 export default function reverse(value: any): any[] {
-    return [];
+    return toArray(value).reverse();
 }

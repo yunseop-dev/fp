@@ -1,9 +1,15 @@
-export default function find<T>(
-    list: T[],
-    predicate: (value: T, index: number, list: T[]) => boolean): T {
-    for (let i = 0, len = list.length; i < len; i++) {
-        if (predicate(list[i], i, list)) {
-            return list[i];
-        }
-    }
-}
+import identity from "./identity";
+import iff from "./if";
+import { bloop } from "./map";
+import noop from "./noop";
+
+const find = bloop(
+    noop,
+    function (bool, result, val) {
+        console.log('arguments', arguments);
+        return val
+    },
+    identity,
+)
+
+export default find;
